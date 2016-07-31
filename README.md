@@ -37,15 +37,24 @@ public class TestSpringBootReactiveNettyController {
 }
 ```
 
-# THE ISSUE
+# How to replicate
 
-The issue that this tries to show is that, when accessed from a browser, many times no HTTP response is sent by netty.
-This happens approximately once each two requests (one request receives no answer, the following does).
+Requirements: Java 8, Maven 3, git client, web browser.
 
-Tested browsers: Chrome on MacOS, Postman (Chrome-based) on MacOS, Firefox on MacOS.
+  * Clone this repository
+  * `cd` to the project's folder
+  * Start the app with `mvn -U clean compile spring-boot:run`
+  * Open browser and go to `http://localhost:8080`
+  * If a small piece of JSON loads OK the first time, hit refresh several times until some of those *refreshes* stop responding at all
 
-By means of debugging it has been determined that Netty **does** receive an HTTP request, even if no response
-is issued.
+
+# Issue description: Mac OS
+
+Tested browsers: Chrome 51, Postman (Chrome-based), Firefox 45, Safari 9.1.2
+
+Symptoms: only alternate requests have response: 1. Response, 2. No response, 3. Response, 4. No response…
+
+By means of debugging it has been determined that Netty **does** receive an HTTP request in every case.
 
 By means of network sniffing it has been determined that the HTTP request looks alright, and exactly the same
 both when there is HTTP response and when there isn't. Example:
@@ -65,4 +74,15 @@ Postman, which works on the Chrome engine).
 
 Also, this behaviour also happens when the application is configured to return HTML (actually this issue initially
 appeared at the [Thymeleaf + Spring Reactive sandbox application](https://github.com/thymeleaf/thymeleafsandbox-springreactive)).
+
+
+# Issue description: Ubuntu 16
+
+Tested browsers: Firefox 47
+
+The first 4-to-5 requests work, then the sixth or seventh doesn't. The exact sequence varies. Once a request
+receives no response, no other subsequent request does until Firefox is restarted.
+
+Quite different to the scenario in Mac OS, **might have no relation at all**.
+
 
