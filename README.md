@@ -54,7 +54,8 @@ Tested browsers: Chrome 51, Postman (Chrome-based), Firefox 45, Safari 9.1.2
 
 Symptoms: only alternate requests have response: 1. Response, 2. No response, 3. Response, 4. No response…
 
-By means of debugging it has been determined that Netty **does** receive an HTTP request in every case.
+By means of debugging it has been determined that Netty **does** receive an HTTP request in every case. But no HTTP
+response is sent half of the times.
 
 By means of network sniffing it has been determined that the HTTP request looks alright, and exactly the same
 both when there is HTTP response and when there isn't. Example:
