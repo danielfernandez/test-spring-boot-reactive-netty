@@ -22,8 +22,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<reactor.version>3.0.0.BUILD-SNAPSHOT</reactor.version>
-		<spring.version>5.0.0.BUILD-SNAPSHOT</spring.version>
+		<reactor.version>3.0.0.RC1</reactor.version>
+		<spring.version>5.0.0.M1</spring.version>
 	</properties>
 
 	<dependencies>
