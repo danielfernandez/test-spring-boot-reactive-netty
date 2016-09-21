@@ -1,6 +1,6 @@
 # test-spring-boot-reactive-netty
 
-This repository tests a possible issue when using Netty to serve a Spring Boot-enabled *Reactive Web* application.
+This repository tests an appearing issue when using Netty to serve a Spring Boot-enabled *Reactive Web* application.
 
 This application is very simple: it was created at [http://start.spring.io](http://start.spring.io) and the following
 modification was made to its `pom.xml` in order to disable the Tomcat starter and use Netty instead:
@@ -39,7 +39,8 @@ public class TestSpringBootReactiveNettyController {
 
 # How to replicate
 
-Requirements: Java 8, Maven 3, git client, web browser.
+Requirements: Java 8, Maven 3, git client, web browser (Chrome or Firefox). Tested on several Operating Systems:
+Mac OS 10.11 El Capitan, Windows 10, Ubuntu 16.
 
   * Clone this repository
   * `cd` to the project's folder
@@ -48,9 +49,13 @@ Requirements: Java 8, Maven 3, git client, web browser.
   * If a small piece of JSON loads OK the first time, hit refresh several times until some of those *refreshes* stop responding at all
 
 
-# Issue description: Mac OS
+# Issue description
 
-Tested browsers: Chrome 51, Postman (Chrome-based), Firefox 45, Safari 9.1.2
+Environments in which this has been replicated:
+
+   * Chrome 52, Postman (Chrome-based), Firefox 49 and Safari 9.1.3 on **Mac OS X 10.11 El Capitan**.
+   * Chrome 52 and Firefox 49 on **Windows 10**.
+   * Chromium 52 and Firefox 48 on **Ubuntu 16**.
 
 Symptoms: only alternate requests have response: 1. Response, 2. No response, 3. Response, 4. No response…
 
@@ -76,14 +81,5 @@ Postman, which works on the Chrome engine).
 Also, this behaviour also happens when the application is configured to return HTML (actually this issue initially
 appeared at the [Thymeleaf + Spring Reactive sandbox application](https://github.com/thymeleaf/thymeleafsandbox-springreactive)).
 
-
-# Issue description: Ubuntu 16
-
-Tested browsers: Firefox 47
-
-The first 4-to-5 requests work, then the sixth or seventh doesn't. The exact sequence varies. Once a request
-receives no response, no other subsequent request does until Firefox is restarted.
-
-Quite different to the scenario in Mac OS, **might have no relation at all**.
 
 
