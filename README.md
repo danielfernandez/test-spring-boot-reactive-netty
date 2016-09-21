@@ -45,7 +45,7 @@ Mac OS 10.11 El Capitan, Windows 10, Ubuntu 16.
   * Clone this repository
   * `cd` to the project's folder
   * Start the app with `mvn -U clean compile spring-boot:run`
-  * Open browser and go to `http://localhost:8080`
+  * Open browser and go to `http://localhost:8080` (it is important that `localhost` is used)
   * If a small piece of JSON loads OK the first time, hit refresh several times until some of those *refreshes* stop responding at all
 
 
@@ -53,9 +53,8 @@ Mac OS 10.11 El Capitan, Windows 10, Ubuntu 16.
 
 Environments in which this has been replicated:
 
-   * Chrome 52, Postman (Chrome-based), Firefox 49 and Safari 9.1.3 on **Mac OS X 10.11 El Capitan**.
-   * Chrome 52 and Firefox 49 on **Windows 10**.
-   * Chromium 52 and Firefox 48 on **Ubuntu 16**.
+   * Chrome 52, Postman (Chrome-based), Firefox 49 and Safari 9.1.3 on **Mac OS X 10.11 El Capitan** (server + browsers, all local).
+   * Chrome 52 and Firefox 49 on **Windows 10** (server + browsers, all local).
 
 Symptoms: only alternate requests have response: 1. Response, 2. No response, 3. Response, 4. No response…
 
@@ -81,5 +80,6 @@ Postman, which works on the Chrome engine).
 Also, this behaviour also happens when the application is configured to return HTML (actually this issue initially
 appeared at the [Thymeleaf + Spring Reactive sandbox application](https://github.com/thymeleaf/thymeleafsandbox-springreactive)).
 
+**IMPORTANT**: This issue, in the same systems and setups, **cannot be replicated when accessing the server using its IP (e.g. `192.168.0.20`)**. So this seems somehow related to the use of `localhost`.
 
 
