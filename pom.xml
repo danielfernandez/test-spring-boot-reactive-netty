@@ -22,8 +22,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<reactor.version>3.0.3.BUILD-SNAPSHOT</reactor.version>
-		<spring.version>5.0.0.BUILD-SNAPSHOT</spring.version>
+		<!-- Need to specify this here. Reactor 2.0.8 would be used if we didn't -->
+		<!-- See: https://github.com/bclozel/spring-boot-web-reactive/issues/36  -->
+		<reactor.version>3.0.2.RELEASE</reactor.version>
 	</properties>
 
 	<dependencies>
